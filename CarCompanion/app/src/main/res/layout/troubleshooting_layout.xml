@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/troubleshooting_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Troubleshooting Mode"
+        android:textSize="24sp"
+        android:layout_margin="60dp"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="118dp" />
+
+    <TextView
+        android:id="@+id/my_car_is"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/seafoam"
+        android:text="My car is..."
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        android:layout_below="@+id/troubleshooting_title"
+        />
+
+    <Button
+        android:id="@+id/sounds_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Making a weird sound"
+        android:layout_marginHorizontal="20dp"
+        android:backgroundTint="@color/darkest_blue"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="227dp" />
+
+    <Button
+        android:id="@+id/lights_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sounds_button"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/darkest_blue"
+        android:layout_marginHorizontal="20dp"
+        android:text="flashing a warning light"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="381dp" />
+
+    <Button
+        android:id="@+id/not_starting_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lights_button"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/darkest_blue"
+        android:text="not starting"
+        android:layout_marginHorizontal="20dp"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="536dp" />
+
+    <Button
+        android:id="@+id/weird_smell_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/not_starting_button"
+        android:backgroundTint="@color/darkest_blue"
+        android:layout_centerInParent="true"
+        android:text="producing a weird smell"
+        android:layout_marginHorizontal="20dp"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="536dp" />
+
+
+</RelativeLayout>
