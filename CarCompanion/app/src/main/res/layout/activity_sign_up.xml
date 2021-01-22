@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/signup_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:textSize="40sp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginHorizontal="20dp"
+        />
+
+    <TextView
+        android:id="@+id/first_name_label"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/first_name"
+        android:layout_below="@+id/signup_title"
+        android:paddingHorizontal="20dp"
+        />
+
+    <EditText
+        android:id="@+id/first_name_edit"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/first_name_label"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/last_name_label"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/last_name"
+        android:layout_below="@+id/signup_title"
+        android:layout_toRightOf="@+id/first_name_label"
+        android:paddingHorizontal="20dp"
+        />
+
+    <EditText
+        android:id="@+id/last_name_edit"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/last_name_label"
+        android:layout_toRightOf="@+id/first_name_edit"
+        android:layout_marginLeft="20dp"
+        />
+
+
+    <TextView
+        android:id="@+id/email_signup_label"
+        style="@style/InfoInputStyle"
+        android:text="@string/email"
+        android:layout_below="@+id/first_name_edit"
+        />
+
+    <EditText
+        android:id="@+id/email_signup_edit"
+        style="@style/InfoInputStyle"
+        android:layout_below="@+id/email_signup_label"
+        />
+
+    <TextView
+        android:id="@+id/password_first_signup_label"
+        style="@style/InfoInputStyle"
+        android:text="@string/choose_password"
+        android:layout_below="@id/email_signup_edit"
+        />
+
+    <EditText
+        android:id="@+id/password_first_signup_edit"
+        style="@style/InfoInputStyle"
+        android:layout_below="@id/password_first_signup_label"
+        />
+
+    <TextView
+        android:id="@+id/password_second_signup_label"
+        style="@style/InfoInputStyle"
+        android:text="@string/confirm_password"
+        android:layout_below="@id/password_first_signup_edit"
+        />
+
+    <EditText
+        android:id="@+id/password_second_signup_edit"
+        style="@style/InfoInputStyle"
+        android:layout_below="@id/password_second_signup_label"
+        />
+
+    <Button
+        android:id="@+id/signup_submit_btn"
+        style="@style/InfoInputStyle"
+        android:layout_below="@id/password_second_signup_edit"
+        android:text="@string/sign_up"
+        />
+
+</RelativeLayout>

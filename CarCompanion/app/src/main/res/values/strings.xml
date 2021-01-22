@@ -24,4 +24,9 @@
     <string name="choose_password">Choose a password:</string>
     <string name="first_name">First Name:</string>
     <string name="last_name">Last Name:</string>
+    <string name="troubleshooting_mode">Troubleshooting Mode</string>
+    <string name="car_details">Car Details</string>
+    <string name="nav_help_string">Nearby Towing/Mechanics</string>
+    <string name="car_nickname">Car Nickname</string>
+    <string name="car_mmy">Car Year Make Model</string>
 </resources>
