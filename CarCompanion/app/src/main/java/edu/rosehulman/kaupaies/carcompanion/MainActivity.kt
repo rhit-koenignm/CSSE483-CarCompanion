@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity(),
         val bottomNavView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         bottomNavView.setOnNavigationItemSelectedListener(this)
 
+        title = "CarCompanion"
+
 //        val navController = findNavController(R.id.nav_host_fragment)
 
 
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity(),
                 currentFragment = "find help"
                 switchFrag(FindHelpFragment())
             }
+            else -> false
         }
 
         return true
