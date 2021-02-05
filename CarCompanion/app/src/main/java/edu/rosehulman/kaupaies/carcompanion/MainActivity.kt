@@ -24,9 +24,10 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        title = "CarCompanion"
+        val navController = findNavController(R.id.fragment_container)
 
-        val bottomNavView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
+        //passing in each menu id
+        val bottomNavView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         bottomNavView.setOnNavigationItemSelectedListener(this)
 
 //        val navController = findNavController(R.id.nav_host_fragment)
@@ -41,7 +42,9 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        var switchTo: Fragment? = null
+
+        when (item.itemId) {
             R.id.navigation_car_detail -> {
                 currentFragment = "car detail"
                 switchFrag(CarDetailFragment())
@@ -52,16 +55,17 @@ class MainActivity : AppCompatActivity(),
             }
             R.id.navigation_find_help -> {
                 currentFragment = "find help"
-                switchFrag(HomeFragment())
+                switchFrag(FindHelpFragment())
             }
-            else -> false
         }
+
+        return true
     }
 
     fun switchFrag(f: Fragment): Boolean {
         Log.d("AAA", "switching fragments")
         val ft = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.nav_host_fragment, f)
+        ft.replace(R.id.fragment_container, f)
         while (supportFragmentManager.backStackEntryCount > 0){
             supportFragmentManager.popBackStackImmediate()
         }
