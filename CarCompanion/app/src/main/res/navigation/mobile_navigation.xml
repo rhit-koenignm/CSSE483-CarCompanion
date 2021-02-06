@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_troubleshooting"
-        android:name="edu.rosehulman.kaupaies.carcompanion.TroubleshootingFragment"
+        android:name="edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment"
         android:label="@string/troubleshooting_mode"
         tools:layout="@layout/fragment_troubleshooting" />
 

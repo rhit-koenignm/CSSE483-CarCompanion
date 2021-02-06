@@ -6,13 +6,9 @@ import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import edu.rosehulman.kaupaies.carcompanion.ui.home.HomeFragment
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
 class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener,
