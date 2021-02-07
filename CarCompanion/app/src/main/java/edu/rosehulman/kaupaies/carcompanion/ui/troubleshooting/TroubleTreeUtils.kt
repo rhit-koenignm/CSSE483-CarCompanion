@@ -7,4 +7,16 @@ object TroubleTreeUtils {
         //Will be implementing
 
     //}
+
+    class T
+
+    fun createTopLevelTroubles() {
+        var troubleTitles = arrayListOf<String>("Flashing Light", "Weird Noise", "Weird Smell")
+
+
+    }
+
+    fun createSymptomLevelTroubles() {
+        var troubleTitles: ArrayList<String> = {}
+    }
 }
