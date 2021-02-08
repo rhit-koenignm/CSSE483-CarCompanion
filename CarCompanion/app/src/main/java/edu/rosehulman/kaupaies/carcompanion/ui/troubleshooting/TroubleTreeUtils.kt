@@ -8,15 +8,21 @@ object TroubleTreeUtils {
 
     //}
 
-    class T
+    fun createTree() {
+
+
+    }
 
     fun createTopLevelTroubles() {
         var troubleTitles = arrayListOf<String>("Flashing Light", "Weird Noise", "Weird Smell")
-
+        var type = "i" //These top level ones are indicators so we will have the type as "i"
 
     }
 
     fun createSymptomLevelTroubles() {
-        var troubleTitles: ArrayList<String> = {}
+        var troubleTitles = arrayListOf<String>("Check Engine ", "Reduced Acceleration")
+        var type = "i" //These top level ones are indicators so we will have the type as "i"
     }
+
+
 }

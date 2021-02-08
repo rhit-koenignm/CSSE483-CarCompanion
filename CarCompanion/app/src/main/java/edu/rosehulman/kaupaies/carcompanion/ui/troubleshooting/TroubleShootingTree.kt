@@ -1,19 +1,21 @@
 package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
 
 class TroubleShootingTree {
-
+    //Troubleshooting trees are composed of nodes that referred to as Woes
+    //The top level woes at the top of the tree are inidicators and are the most vague form woes as they just help us to narrow down the
 
     class Woe {
         var name: String = ""
-        var  tribulations: ArrayList<Woe> = ArrayList<Woe>()
+        var symptoms = ArrayList<Woe>()
+        var type: String = ""
 
-        constructor(newName: String, givenTribs: ArrayList<Woe>){
+        constructor(newName: String, givenSymptoms: ArrayList<Woe>, ){
             name = newName
-            tribulations =  givenTribs
+            symptoms =  givenSymptoms
         }
 
-        public addTrib(givenWoe: Woe){
-            tribulations.add(givenWoe)
-        }
+
     }
+
+
 }
