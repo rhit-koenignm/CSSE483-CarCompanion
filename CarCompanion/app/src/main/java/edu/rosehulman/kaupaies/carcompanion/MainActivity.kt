@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navController = findNavController(R.id.fragment_container)
+//        val navController = findNavController(R.id.fragment_container)
 
         //passing in each menu id
         val bottomNavView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
