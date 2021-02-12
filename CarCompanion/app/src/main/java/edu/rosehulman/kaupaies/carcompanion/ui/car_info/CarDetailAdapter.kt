@@ -18,16 +18,16 @@ class CarDetailAdapter (var context: Context?): RecyclerView.Adapter<CarDetailVi
         .getInstance()
         //TODO: If i uncomment the following line, it just absolutely floods the car detail collection
         // with something i placed as an initial entry to the collection; i have no idea why
-//        .collection("cars")
+        .collection("cars")
 
     init {
-//        detailRef.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
-//            carList.clear()
-//            for(doc in snapshot!!) {
-//                carList.add(CarDetails.fromSnapshot(doc))
-//            }
-//            notifyDataSetChanged()
-//        }
+        detailRef.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
+            carList.clear()
+            for(doc in snapshot!!) {
+                carList.add(CarDetails.fromSnapshot(doc))
+            }
+            notifyDataSetChanged()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarDetailViewHolder {
@@ -41,8 +41,8 @@ class CarDetailAdapter (var context: Context?): RecyclerView.Adapter<CarDetailVi
 
     override fun getItemCount(): Int = carList.size
 
-//    fun add(cd: CarDetails) {
-//        detailRef.add(cd)
-//    }
+    fun add(cd: CarDetails) {
+        detailRef.add(cd)
+    }
 
 }

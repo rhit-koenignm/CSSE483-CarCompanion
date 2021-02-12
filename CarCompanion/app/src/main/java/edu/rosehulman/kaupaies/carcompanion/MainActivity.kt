@@ -13,7 +13,8 @@ import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFr
 
 class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener,
-        BottomNavigationView.OnNavigationItemSelectedListener {
+        BottomNavigationView.OnNavigationItemSelectedListener,
+        TroubleshootingFragment.OnTroubleSelectedListener {
 
     private var currentFragment:String = "home"
 
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var switchTo: Fragment? = null
+        Log.d(Constants.TAG, "switching to any fragment")
 
         when (item.itemId) {
             R.id.navigation_car_detail -> {
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity(),
             }
             R.id.navigation_troubleshooting -> {
                 currentFragment = "troubleshooting"
+                Log.d(Constants.TAG, "switching to troubleshoot")
                 switchFrag(TroubleshootingFragment())
             }
             R.id.navigation_find_help -> {
