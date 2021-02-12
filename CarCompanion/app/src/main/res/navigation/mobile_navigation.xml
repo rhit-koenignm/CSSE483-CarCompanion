@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_car_detail"
-        android:name="edu.rosehulman.kaupaies.carcompanion.CarDetailFragment"
+        android:name="edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailFragment"
         android:label="@string/car_details"
         tools:layout="@layout/fragment_car_details" />
 

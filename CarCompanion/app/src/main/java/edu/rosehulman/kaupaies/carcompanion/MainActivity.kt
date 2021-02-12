@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationView
+import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
 class MainActivity : AppCompatActivity(),
