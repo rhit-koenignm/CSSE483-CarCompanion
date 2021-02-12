@@ -17,5 +17,10 @@ class TroubleShootingTree {
 
     }
 
+    class Diagnosis {
+        var name: String = ""
+
+    }
+
 
 }

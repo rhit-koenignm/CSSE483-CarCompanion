@@ -51,9 +51,7 @@ class TroubleshootingFragment : Fragment() {
     }
 
     interface OnTroubleSelectedListener {
-        fun onTroubleSelected(woe: TroubleShootingTree.Woe){
-
-        }
+        fun onTroubleSelected(woe: TroubleShootingTree.Woe)
     }
 
 }
