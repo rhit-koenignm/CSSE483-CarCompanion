@@ -21,23 +21,11 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val navController = findNavController(R.id.fragment_container)
-
         //passing in each menu id
         val bottomNavView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         bottomNavView.setOnNavigationItemSelectedListener(this)
 
         title = "CarCompanion"
-
-//        val navController = findNavController(R.id.nav_host_fragment)
-
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(setOf(
-//                R.id.navigation_home, R.id.navigation_car_detail, R.id.navigation_troubleshooting))
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-        //navView.setupWithNavController(navController)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -58,12 +46,10 @@ class MainActivity : AppCompatActivity(),
             }
             else -> false
         }
-
         return true
     }
 
-    fun switchFrag(f: Fragment): Boolean {
-        Log.d("AAA", "switching fragments")
+    private fun switchFrag(f: Fragment): Boolean {
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.fragment_container, f)
         while (supportFragmentManager.backStackEntryCount > 0){

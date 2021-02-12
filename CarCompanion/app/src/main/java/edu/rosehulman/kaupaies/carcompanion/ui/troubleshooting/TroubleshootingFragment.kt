@@ -35,7 +35,7 @@ class TroubleshootingFragment : Fragment() {
         if(context is OnTroubleSelectedListener){
             listener = context
         } else {
-            throw RuntimeException(context.toString() + "must implement OnTroubleSelected")
+//            throw RuntimeException(context.toString() + "must implement OnTroubleSelected")
         }
     }
 
