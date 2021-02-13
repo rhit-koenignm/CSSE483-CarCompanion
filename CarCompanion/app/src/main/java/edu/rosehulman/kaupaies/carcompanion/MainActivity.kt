@@ -6,9 +6,9 @@ import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationView
 import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailFragment
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
@@ -64,6 +64,18 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onTroubleSelected(woe: TroubleShootingTree.Woe) {
-        TODO("Not yet implemented")
+
+        Log.d(Constants.TAG, "Trouble Selected: ${woe.getTitle()}")
+        if(woe.type.equals("Diagnosis")){
+            val detailFragment = DiagnosisDetailsFragment.newInstance(woe.data)
+            val ft = supportFragmentManager.beginTransaction()
+            ft.replace(R.id.fragment_container, detailFragment)
+            ft.addToBackStack("detail")
+            ft.commit()
+        }
+        else{
+            //if a non diagnosis is selected then we want to let the adapter know
+            //will create function later
+        }
     }
 }

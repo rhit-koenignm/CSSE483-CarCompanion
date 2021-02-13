@@ -14,7 +14,7 @@ class TroubleViewHolder(itemView: View, adapter: TroubleAdapter) : RecyclerView.
         }
     }
 
-    fun bind(woe: TroubleShootingTree.Woe){
-        titleTextView.text = woe.name
+    fun bind(trouble: TroubleData){
+        titleTextView.text = trouble.title
     }
 }
