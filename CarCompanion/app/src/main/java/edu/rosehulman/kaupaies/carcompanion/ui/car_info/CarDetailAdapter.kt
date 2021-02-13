@@ -8,16 +8,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import edu.rosehulman.kaupaies.carcompanion.Constants
+import edu.rosehulman.kaupaies.carcompanion.MainActivity
 import edu.rosehulman.kaupaies.carcompanion.R
 
-class CarDetailAdapter (var context: Context?): RecyclerView.Adapter<CarDetailViewHolder>() {
+class CarDetailAdapter (var context: Context?, var main: MainActivity): RecyclerView.Adapter<CarDetailViewHolder>() {
 
     private var carList:ArrayList<CarDetails> = ArrayList<CarDetails>()
 
     private val detailRef = FirebaseFirestore
         .getInstance()
-        //TODO: If i uncomment the following line, it just absolutely floods the car detail collection
-        // with something i placed as an initial entry to the collection; i have no idea why
         .collection("cars")
 
     init {
@@ -32,7 +31,7 @@ class CarDetailAdapter (var context: Context?): RecyclerView.Adapter<CarDetailVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarDetailViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.cardview_car_detail, parent, false)
-        return CarDetailViewHolder(view)
+        return CarDetailViewHolder(view, main)
     }
 
     override fun onBindViewHolder(holder: CarDetailViewHolder, position: Int) {
@@ -41,7 +40,7 @@ class CarDetailAdapter (var context: Context?): RecyclerView.Adapter<CarDetailVi
 
     override fun getItemCount(): Int = carList.size
 
-    fun add(cd: CarDetails) {
+    fun addCar(cd: CarDetails) {
         detailRef.add(cd)
     }
 

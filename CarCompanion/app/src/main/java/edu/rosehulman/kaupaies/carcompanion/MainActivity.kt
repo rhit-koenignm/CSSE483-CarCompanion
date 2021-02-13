@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationView
 import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailFragment
+import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
 class MainActivity : AppCompatActivity(),
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity(),
         when (item.itemId) {
             R.id.navigation_car_detail -> {
                 currentFragment = "car detail"
-                switchFrag(CarDetailFragment())
+                switchFrag(CarDetailFragment(this))
             }
             R.id.navigation_troubleshooting -> {
                 currentFragment = "troubleshooting"
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity(),
         return true
     }
 
-    private fun switchFrag(f: Fragment): Boolean {
+    fun switchFrag(f: Fragment): Boolean {
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.fragment_container, f)
         while (supportFragmentManager.backStackEntryCount > 0){
@@ -60,5 +61,9 @@ class MainActivity : AppCompatActivity(),
         }
         ft.commit()
         return true
+    }
+
+    override fun onTroubleSelected(woe: TroubleShootingTree.Woe) {
+        TODO("Not yet implemented")
     }
 }

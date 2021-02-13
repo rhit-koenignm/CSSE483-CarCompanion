@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import edu.rosehulman.kaupaies.carcompanion.R
+
 //import kotlinx.android.synthetic.main..view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,19 +21,19 @@ private const val ARG_DOC = "doc"
 class DocDetailFragment : Fragment() {
 
     companion object {
-        @JvmStatic
-        fun newInstance(doc: Doc): DocDetailFragment{
-            val fragment = DocDetailFragment()
-            fragment.arguments = Bundle()
-            fragment.arguments!!.putParcelable(ARG_DOC, doc)
-            return fragment
-        }
+//        @JvmStatic
+//        fun newInstance(doc: Doc): DocDetailFragment{
+//            val fragment = DocDetailFragment()
+//            fragment.arguments = Bundle()
+//            fragment.arguments!!.putParcelable(ARG_DOC, doc)
+//            return fragment
+//        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            doc = arguments?.getParcelable(ARG_DOC)
+//            doc = arguments?.getParcelable(ARG_DOC)
         }
     }
 
@@ -39,9 +41,9 @@ class DocDetailFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_doc_detail, container, false)
-        view.fragment_doc_detail_title.text = doc?.title
-        view.fragment_doc_detail_body.text = doc?.text
+//        val view = inflater.inflate(R.layout.fragment_doc_detail, container, false)
+//        view.fragment_doc_detail_title.text = doc?.title
+//        view.fragment_doc_detail_body.text = doc?.text
 
         return view
     }
