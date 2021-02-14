@@ -65,14 +65,17 @@ class MainActivity : AppCompatActivity(),
 
     override fun onTroubleSelected(woe: TroubleShootingTree.Woe) {
         Log.d(Constants.TAG, "Trouble Selected: ${woe.getTitle()}")
-        if(woe.type.equals("Diagnosis")){
+        if(woe.woeType.equals("Diagnosis")){
             val detailFragment = DiagnosisDetailsFragment.newInstance(woe.data)
             val ft = supportFragmentManager.beginTransaction()
             ft.replace(R.id.fragment_container, detailFragment)
             ft.addToBackStack("detail")
             ft.commit()
         }
+        else if(woe.woeType.equals("Symptom"))
         else{
+            //This case will be for when a indicator is picked
+
             //if a non diagnosis is selected then we want to let the adapter know
             //will create function later
         }
