@@ -12,16 +12,19 @@ import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.DiagnosisDetailsF
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
-class MainActivity : AppCompatActivity(),
-        NavigationView.OnNavigationItemSelectedListener,
+class MainActivity(val user: String) : AppCompatActivity(),
+//        NavigationView.OnNavigationItemSelectedListener,
         BottomNavigationView.OnNavigationItemSelectedListener,
         TroubleshootingFragment.OnTroubleSelectedListener {
+
+    constructor(): this("CAR_COMPANION_GUEST_USER")
 
     private var currentFragment:String = "home"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         //passing in each menu id
         val bottomNavView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)

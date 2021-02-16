@@ -17,11 +17,15 @@ class CarDetailAdapter (var context: Context?, var main: MainActivity): Recycler
 
     private val detailRef = FirebaseFirestore
         .getInstance()
-        .collection("cars")
+            .collection("users")
+            .document(main.user)
+            .collection("cars")
 
     init {
         detailRef.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
             carList.clear()
+            if(snapshot == null)
+                return@addSnapshotListener
             for(doc in snapshot!!) {
                 carList.add(CarDetails.fromSnapshot(doc))
             }

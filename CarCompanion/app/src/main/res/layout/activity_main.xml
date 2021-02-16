@@ -6,6 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/Theme.CarCompanion.AppBarOverlay"
+        app:layout_constraintTop_toTopOf="@+id/activity_main"
+        />
+
     <FrameLayout
         android:id="@+id/fragment_container"
         xmlns:tools="http://schemas.android.com/tools"
