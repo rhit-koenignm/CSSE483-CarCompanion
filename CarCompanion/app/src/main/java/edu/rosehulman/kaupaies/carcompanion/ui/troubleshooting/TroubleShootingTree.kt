@@ -14,11 +14,11 @@ public class TroubleShootingTree {
     var woes = ArrayList<Woe>()
 
 
+    open class Woe(val data: TroubleData, open var woeType: String) {
 
-
-    public interface Woe {
-        var data: TroubleData
-        var woeType: String
+        init {
+            woeType = "Woe"
+        }
 
         fun getTitle(): String {
             return this.data.title
@@ -33,20 +33,16 @@ public class TroubleShootingTree {
         }
     }
 
-    class Symptom : Woe {
-        override lateinit var data: TroubleData
+    class Symptom(data: TroubleData, woeType: String) : Woe(data, woeType) {
         override var woeType: String = "Symptom"
 
-        constructor()
+
+
     }
 
-    class Diagnosis : Woe {
-        override lateinit var data: TroubleData
+    class Diagnosis(data: TroubleData, woeType: String) : Woe(data, woeType) {
         override var woeType: String = "Diagnosis"
 
-        constructor(givenData: TroubleData, givenType: String){
-
-        }
 
         @JvmName("getDiagnosisData")
         fun getData(): TroubleData{
