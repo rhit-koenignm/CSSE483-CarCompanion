@@ -1,4 +1,4 @@
-package edu.rosehulman.kaupaies.carcompanion.ui.login
+package edu.rosehulman.kaupaies.carcompanion
 
 import android.app.Activity
 import android.content.Intent
@@ -7,9 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
-import edu.rosehulman.kaupaies.carcompanion.Constants
-import edu.rosehulman.kaupaies.carcompanion.MainActivity
-import edu.rosehulman.kaupaies.carcompanion.R
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
@@ -17,13 +14,11 @@ class WelcomeActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
     lateinit var authStateListener: FirebaseAuth.AuthStateListener
 
-    val providers = arrayListOf(
+    private val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build()
     )
 
-    val RC_SIGN_IN = 1
-
-    private val GUEST_UID = "CAR_COMPANION_GUEST_USER"
+    private val RC_SIGN_IN = 1
 
     private var currentActivity: Activity = this
 
@@ -57,17 +52,13 @@ class WelcomeActivity : AppCompatActivity() {
 
         btn_guest.setOnClickListener {
             auth.signInAnonymously()
-            Log.d(Constants.TAG, "signing up anon, id = ${auth.currentUser}")
         }
     }
 
     private fun initializeAuthListeners() {
         authStateListener = FirebaseAuth.AuthStateListener { auth: FirebaseAuth ->
             val user = auth.currentUser
-            Log.d(Constants.TAG, "listener doing something")
-            Log.d(Constants.TAG, currentActivity.toString())
             if(user != null) {
-                Log.d(Constants.TAG, "${user.email}")
                 this.currentActivity = MainActivity(user.uid, auth)
                 switchActivity(this.currentActivity as MainActivity)
             } else if(this.currentActivity != this) {
@@ -76,6 +67,5 @@ class WelcomeActivity : AppCompatActivity() {
             }
         }
     }
-
 
 }

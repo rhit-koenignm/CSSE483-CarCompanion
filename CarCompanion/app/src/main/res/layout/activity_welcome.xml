@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.WelcomeActivity">
+    tools:context=".WelcomeActivity">
 
     <TextView
         android:id="@+id/welcomeText"
@@ -28,15 +28,8 @@
 
     <Button
         style="@style/WelcomeButtons"
-        android:id="@+id/btn_signup"
-        android:layout_below="@id/btn_login"
-        android:text="@string/sign_up"
-        />
-
-    <Button
-        style="@style/WelcomeButtons"
         android:id="@+id/btn_guest"
-        android:layout_below="@+id/btn_signup"
+        android:layout_below="@+id/btn_login"
         android:text="@string/use_as_guest"
         />
 

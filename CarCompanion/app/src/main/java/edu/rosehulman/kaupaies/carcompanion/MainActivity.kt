@@ -20,7 +20,7 @@ class MainActivity(val user: String, val auth: FirebaseAuth) : AppCompatActivity
         BottomNavigationView.OnNavigationItemSelectedListener,
         TroubleshootingFragment.OnTroubleSelectedListener {
 
-    constructor(): this("CAR_COMPANION_GUEST_USER", FirebaseAuth.getInstance())
+    constructor(): this("DEFAULT", FirebaseAuth.getInstance())
 
     private var currentFragment:String = "home"
 
