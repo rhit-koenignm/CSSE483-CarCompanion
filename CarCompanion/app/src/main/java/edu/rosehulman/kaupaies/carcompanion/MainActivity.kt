@@ -2,22 +2,25 @@ package edu.rosehulman.kaupaies.carcompanion
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
-class MainActivity(val user: String) : AppCompatActivity(),
+class MainActivity(val user: String, val auth: FirebaseAuth) : AppCompatActivity(),
 //        NavigationView.OnNavigationItemSelectedListener,
         BottomNavigationView.OnNavigationItemSelectedListener,
         TroubleshootingFragment.OnTroubleSelectedListener {
 
-    constructor(): this("CAR_COMPANION_GUEST_USER")
+    constructor(): this("CAR_COMPANION_GUEST_USER", FirebaseAuth.getInstance())
 
     private var currentFragment:String = "home"
 
@@ -31,6 +34,11 @@ class MainActivity(val user: String) : AppCompatActivity(),
         bottomNavView.setOnNavigationItemSelectedListener(this)
 
         title = "CarCompanion"
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -54,6 +62,17 @@ class MainActivity(val user: String) : AppCompatActivity(),
             else -> false
         }
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                Log.d(Constants.TAG, "logging out <3")
+                auth.signOut()
+                true
+            }
+            else -> false
+        }
     }
 
     fun switchFrag(f: Fragment): Boolean {

@@ -31,7 +31,7 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
 
     fun selectTroubleAt(adapterPosition: Int) {
         val trouble = troubles[adapterPosition]
-        listener?.onTroubleSelected(TroubleShootingTree.Woe(trouble, "Diagnosis"))
+//        listener?.onTroubleSelected(TroubleShootingTree.Woe(trouble, "Diagnosis"))
     }
 
 }
