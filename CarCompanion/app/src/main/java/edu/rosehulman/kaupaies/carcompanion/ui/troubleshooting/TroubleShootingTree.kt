@@ -31,13 +31,14 @@ public class TroubleShootingTree {
         else if(currentStep < indicators.size){
             //This means we are still in the troubleshooting stage where we looking at the
             currentStep++
-            return indicators.get(this.currentStep).symptoms
+//            return indicators.get(this.currentStep).symptoms
         }
         else {
             //This means we are looking at a diagnosis so our
             currentStep = 0
-            return diagnoses(symptomPath)
+//            return diagnoses(symptomPath)
         }
+        return arrayListOf()
     }
 
 

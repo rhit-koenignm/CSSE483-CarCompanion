@@ -13,19 +13,26 @@ import edu.rosehulman.kaupaies.carcompanion.ui.find_help.FindHelpFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
+import kotlin.properties.Delegates
 
-class MainActivity(val user: String, val auth: FirebaseAuth, val isAnon: Boolean) : AppCompatActivity(),
+class MainActivity : AppCompatActivity(),
         BottomNavigationView.OnNavigationItemSelectedListener,
         TroubleshootingFragment.OnTroubleSelectedListener {
 
-    constructor(): this("N/A", FirebaseAuth.getInstance(), true)
-
     private var currentFragment:String = "home"
+    val auth = FirebaseAuth.getInstance()
+    var user: String? = null
+    private var isAnon = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(Constants.TAG, "main onCreate running")
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        user = intent.getStringExtra(WelcomeActivity.USER_UID)
+        Log.d(Constants.TAG, "user sent in: ${intent.getStringExtra(WelcomeActivity.USER_UID)}")
+        isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
 
         //passing in each menu id
         val bottomNavView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)

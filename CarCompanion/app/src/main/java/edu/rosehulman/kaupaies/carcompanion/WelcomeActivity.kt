@@ -32,12 +32,6 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         auth.addAuthStateListener(authStateListener)
-        Log.d(Constants.TAG, "added listener to auth")
-    }
-
-    private fun switchActivity(activity: AppCompatActivity) {
-        val intent = Intent(this@WelcomeActivity, activity::class.java)
-        startActivity(intent)
     }
 
     private fun initializeButtonListeners() {
@@ -46,6 +40,7 @@ class WelcomeActivity : AppCompatActivity() {
                     AuthUI.getInstance()
                             .createSignInIntentBuilder()
                             .setAvailableProviders(providers)
+                            .setIsSmartLockEnabled(false)
                             .build(), RC_SIGN_IN
             )
         }
@@ -58,16 +53,25 @@ class WelcomeActivity : AppCompatActivity() {
     private fun initializeAuthListeners() {
         authStateListener = FirebaseAuth.AuthStateListener { auth: FirebaseAuth ->
             val user = auth.currentUser
-            Log.d(Constants.TAG, "${user?.uid}")
             if(user != null) {
                 this.currentActivity = "MainActivity"
-                switchActivity(MainActivity(user.uid, auth, user.isAnonymous))
+
+                val inputIntent = Intent(this, MainActivity::class.java)
+                inputIntent.putExtra(USER_UID, user.uid)
+                inputIntent.putExtra(IS_ANON, user.isAnonymous)
+                Log.d(Constants.TAG, "user: ${user?.uid} ${user?.email} ${user?.isAnonymous}")
+                startActivity(inputIntent)
             } else if(this.currentActivity != "WelcomeActivity") {
-                Log.d(Constants.TAG, "should be going back to welcome???")
                 this.currentActivity = "WelcomeActivity"
-                switchActivity(this)
+                val intent = Intent(this@WelcomeActivity, this::class.java)
+                startActivity(intent)
             }
         }
+    }
+
+    companion object {
+        const val USER_UID = "USER_UID"
+        const val IS_ANON = "IS_ANON"
     }
 
 }

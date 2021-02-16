@@ -15,14 +15,16 @@ class CarDetailAdapter (var context: Context?, var main: MainActivity): Recycler
 
     private var carList:ArrayList<CarDetails> = ArrayList<CarDetails>()
 
-    private val detailRef = FirebaseFirestore
-        .getInstance()
-            .collection("users")
-            .document(main.user)
-            .collection("cars")
+    private val detailRef = main.user?.let {
+        FirebaseFirestore
+                .getInstance()
+                .collection("users")
+                .document(it)
+                .collection("cars")
+    }
 
     init {
-        detailRef.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
+        detailRef?.addSnapshotListener { snapshot: QuerySnapshot?, exception: FirebaseFirestoreException? ->
             carList.clear()
             if(snapshot == null)
                 return@addSnapshotListener
@@ -45,7 +47,7 @@ class CarDetailAdapter (var context: Context?, var main: MainActivity): Recycler
     override fun getItemCount(): Int = carList.size
 
     fun addCar(cd: CarDetails) {
-        detailRef.add(cd)
+        detailRef?.add(cd)
     }
 
 }
