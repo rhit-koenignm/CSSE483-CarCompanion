@@ -7,20 +7,18 @@ import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailFragment
+import edu.rosehulman.kaupaies.carcompanion.ui.find_help.FindHelpFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
-class MainActivity(val user: String, val auth: FirebaseAuth) : AppCompatActivity(),
-//        NavigationView.OnNavigationItemSelectedListener,
+class MainActivity(val user: String, val auth: FirebaseAuth, val isAnon: Boolean) : AppCompatActivity(),
         BottomNavigationView.OnNavigationItemSelectedListener,
         TroubleshootingFragment.OnTroubleSelectedListener {
 
-    constructor(): this("DEFAULT", FirebaseAuth.getInstance())
+    constructor(): this("N/A", FirebaseAuth.getInstance(), true)
 
     private var currentFragment:String = "home"
 
@@ -43,23 +41,25 @@ class MainActivity(val user: String, val auth: FirebaseAuth) : AppCompatActivity
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var switchTo: Fragment? = null
-        Log.d(Constants.TAG, "switching to any fragment")
 
         when (item.itemId) {
             R.id.navigation_car_detail -> {
                 currentFragment = "car detail"
+                Log.d(Constants.TAG, "user going to car details: $user")
+                if(isAnon) {
+                    switchFrag(AnonFragment())
+                    return true
+                }
                 switchFrag(CarDetailFragment(this))
             }
             R.id.navigation_troubleshooting -> {
                 currentFragment = "troubleshooting"
-                Log.d(Constants.TAG, "switching to troubleshoot")
                 switchFrag(TroubleshootingFragment())
             }
             R.id.navigation_find_help -> {
                 currentFragment = "find help"
                 switchFrag(FindHelpFragment())
             }
-            else -> false
         }
         return true
     }
@@ -67,7 +67,6 @@ class MainActivity(val user: String, val auth: FirebaseAuth) : AppCompatActivity
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_logout -> {
-                Log.d(Constants.TAG, "logging out <3")
                 auth.signOut()
                 true
             }

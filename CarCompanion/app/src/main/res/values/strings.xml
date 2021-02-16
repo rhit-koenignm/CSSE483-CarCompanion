@@ -17,6 +17,10 @@
     <string name="troubleshooting_mode">Troubleshooting Mode</string>
     <string name="car_details">Car Details</string>
     <string name="nav_help_string">Nearby Towing/Mechanics</string>
-    <string name="car_nickname">Car Nickname</string>
-    <string name="car_mmy">Car Year Make Model</string>
+    <string name="anon_car_details">Please login/sign up to use this feature!</string>
+    <string name="nickname">Nickname:</string>
+    <string name="ymm">Year Make Model:</string>
+    <string name="vin">VIN:</string>
+    <string name="license_plate">License Plate:</string>
+    <string name="license_state">License State:</string>
 </resources>

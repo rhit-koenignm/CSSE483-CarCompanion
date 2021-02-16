@@ -13,7 +13,7 @@
             android:id="@+id/car_nick_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/car_nickname"
+            android:text="@string/nickname"
             android:layout_toRightOf="@id/car_img"
             android:textSize="30sp"
             android:layout_marginTop="30dp"
@@ -24,7 +24,7 @@
             android:id="@+id/car_ymm_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/car_mmy"
+            android:text="@string/ymm"
             android:layout_toRightOf="@+id/car_img"
             android:textSize="20sp"
             android:layout_below="@id/car_nick_txt"/>
