@@ -20,7 +20,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private val RC_SIGN_IN = 1
 
-    private var currentActivity: Activity = this
+    private var currentActivity: String = "WelcomeActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,11 +58,13 @@ class WelcomeActivity : AppCompatActivity() {
     private fun initializeAuthListeners() {
         authStateListener = FirebaseAuth.AuthStateListener { auth: FirebaseAuth ->
             val user = auth.currentUser
+            Log.d(Constants.TAG, "${user?.uid}")
             if(user != null) {
-                this.currentActivity = MainActivity(user.uid, auth)
-                switchActivity(this.currentActivity as MainActivity)
-            } else if(this.currentActivity != this) {
-                this.currentActivity = this
+                this.currentActivity = "MainActivity"
+                switchActivity(MainActivity(user.uid, auth, user.isAnonymous))
+            } else if(this.currentActivity != "WelcomeActivity") {
+                Log.d(Constants.TAG, "should be going back to welcome???")
+                this.currentActivity = "WelcomeActivity"
                 switchActivity(this)
             }
         }
