@@ -10,10 +10,11 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
 
     var tree = TroubleShootingTree()
     //temporarily gonna use a list of TroubleData
-    var troubles = ArrayList<TroubleData>()
+
+    var woes = ArrayList<TroubleShootingTree.Woe>()
 
     init {
-        troubles = TroubleTreeUtils.loadTroubles(context)
+        woes = TroubleTreeUtils.loadWoes(context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TroubleViewHolder {
@@ -22,16 +23,18 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
     }
 
     override fun onBindViewHolder(holder: TroubleViewHolder, position: Int) {
-        holder.bind(troubles[position])
+        holder.bind(woes[position])
     }
 
     override fun getItemCount(): Int {
-        return troubles.size
+        return woes.size
     }
 
     fun selectTroubleAt(adapterPosition: Int) {
-        val trouble = troubles[adapterPosition]
-//        listener?.onTroubleSelected(TroubleShootingTree.Woe(trouble, "Diagnosis"))
+        val currentWoe = woes.get(adapterPosition)
+        listener?.onTroubleSelected(currentWoe)
     }
+
+
 
 }

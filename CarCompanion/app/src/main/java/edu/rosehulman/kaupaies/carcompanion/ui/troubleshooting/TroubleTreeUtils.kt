@@ -4,6 +4,8 @@ import android.content.Context
 
 object TroubleTreeUtils {
 
+
+
     fun loadTroubleTree(context: Context?): TroubleShootingTree{
         return TroubleShootingTree()
     }
@@ -15,20 +17,26 @@ object TroubleTreeUtils {
         return troubles
     }
 
-    fun createTree() {
+    fun createTree(context: Context?): TroubleShootingTree {
+        val troubleTree = TroubleShootingTree()
 
-
+        return troubleTree
     }
 
-    fun createTopLevelTroubles() {
+    fun loadWoes(context: Context?): ArrayList<TroubleShootingTree.Woe> {
+        var woeList = ArrayList<TroubleShootingTree.Woe>()
+        return woeList
+    }
+
+    fun createIndicators() {
         var troubleTitles = arrayListOf<String>("Flashing Light", "Weird Noise", "Weird Smell")
-        var type = "i" //These top level ones are indicators so we will have the type as "i"
+        var type = "Indicators" //These top level ones are indicators so we will have the type as "i"
 
     }
 
     fun createSymptomLevelTroubles() {
         var troubleTitles = arrayListOf<String>("Check Engine ", "Reduced Acceleration")
-        var type = "i" //These top level ones are indicators so we will have the type as "i"
+        var type = "Symptom" //These top level ones are indicators so we will have the type as "i"
     }
 
 
