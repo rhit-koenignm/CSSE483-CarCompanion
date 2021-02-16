@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailFragment
+import edu.rosehulman.kaupaies.carcompanion.ui.find_help.FindHelpFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
 
 class MainActivity(val user: String, val auth: FirebaseAuth, val isAnon: Boolean) : AppCompatActivity(),
-//        NavigationView.OnNavigationItemSelectedListener,
         BottomNavigationView.OnNavigationItemSelectedListener,
         TroubleshootingFragment.OnTroubleSelectedListener {
 
