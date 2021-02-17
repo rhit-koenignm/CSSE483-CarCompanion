@@ -29,4 +29,5 @@
     <string name="next_step">Next Step</string>
     <string name="diagnosis_title">A possible Diagnosis is...</string>
     <string name="year">Year:</string>
+    <string name="title_activity_help_map">Map</string>
 </resources>

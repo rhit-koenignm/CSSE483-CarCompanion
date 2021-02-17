@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map_layout"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/seafoam"
-    />
+    tools:context=".ui.find_help.HelpMapActivity"
+    android:background="@color/seafoam" />

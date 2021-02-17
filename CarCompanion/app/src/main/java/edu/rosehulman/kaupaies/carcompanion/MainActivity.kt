@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity(),
         setSupportActionBar(findViewById(R.id.toolbar))
 
         user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
+
+        user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
 
         //passing in each menu id
