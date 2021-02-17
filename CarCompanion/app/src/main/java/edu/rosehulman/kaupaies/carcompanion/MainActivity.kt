@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(),
 
     private var currentFragment:String = "home"
     val auth = FirebaseAuth.getInstance()
-    var user: String? = null
+    lateinit var user: String
     private var isAnon = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(),
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        user = intent.getStringExtra(WelcomeActivity.USER_UID)
+        user = intent.getStringExtra(WelcomeActivity.USER_UID).toString()
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
 
         //passing in each menu id
@@ -72,6 +72,14 @@ class MainActivity : AppCompatActivity(),
         return when (item.itemId) {
             R.id.action_logout -> {
                 auth.signOut()
+                true
+            }
+            R.id.action_add_car -> {
+                if(isAnon) {
+                    switchFrag(AnonFragment())
+                    return true
+                }
+                switchFrag(AddCarFragment(user))
                 true
             }
             else -> false

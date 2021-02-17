@@ -5,7 +5,7 @@ import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleData
 
 data class CarDetails
     (var nickname: String = "",
-     var year: Int = 0,
+     var year: String = "",
      var make: String = "",
      var model: String = "",
      var VIN: String = "",
