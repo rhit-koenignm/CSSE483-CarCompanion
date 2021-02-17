@@ -16,7 +16,6 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
     init {
         //tree = TroubleTreeUtils.loadTroubleTree(context)
         woes = TroubleTreeUtils.loadWoes(context)
-        add(woes)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TroubleViewHolder {
@@ -39,7 +38,7 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
 
     fun stepThruTree(adapterPosition: Int){
         removeWoes()
-        add(tree.nextStep(woes.get(adapterPosition)))
+        addWoes(tree.nextStep(woes.get(adapterPosition)))
     }
 
     fun removeWoes() {
@@ -49,11 +48,11 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
         }
     }
 
-    fun add(w: ArrayList<TroubleShootingTree.Woe>){
-        removeWoes()
-
-        for(i in 1..w.size){
-            woes.add(i, w.get(i))
+    fun addWoes(w: ArrayList<TroubleShootingTree.Woe>){
+        var size = w.size - 1
+        for(i in 0..size){
+            woes.add(w[i])
+            notifyItemInserted(i)
         }
 
     }

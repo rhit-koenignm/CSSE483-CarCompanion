@@ -16,30 +16,34 @@ object TroubleTreeUtils {
     }
 
     fun createTree(context: Context?): TroubleShootingTree {
-        val troubleTree =     TroubleShootingTree()
+        val troubleTree = TroubleShootingTree()
 
         return troubleTree
     }
 
     fun loadWoes(context: Context?): ArrayList<TroubleShootingTree.Woe> {
-        var woeList = ArrayList<TroubleShootingTree.Woe>()
-        createIndicators(woeList)
+        var woeList = createIndicators()
         return woeList
     }
 
-    fun createIndicators(woeList: ArrayList<TroubleShootingTree.Woe>) {
-        var troubleTitles = arrayListOf<String>("Flashing Light", "Weird Noise", "Weird Smell", "Performance Issues", "")
+    fun createIndicators(): ArrayList<TroubleShootingTree.Woe> {
+        var troubleData = ArrayList<TroubleData>()
+        troubleData.add(TroubleData("Flashing Light", "There are a variety of warning lights on your dashboard, are any lit?"))
+        troubleData.add(TroubleData("Weird Noise", "Is your car making a strange sound?"))
+        troubleData.add(TroubleData("Weird Smell", "Is there a strangle smell on the outside or inside of your car?"))
+        troubleData.add(TroubleData("Performance Issues", "Is your car having trouble starting or accelerating?"))
+        troubleData.add(TroubleData("I see something strange", "Is there smoke coming out of your car?"))
+        var type = "Indicator" //These top level ones are indicators so we will have the type as "i"
 
-        var type = "This is an indicator woe" //These top level ones are indicators so we will have the type as "i"
-
-        for(title in troubleTitles){
-            val indicatorData = TroubleData(title, type)
-            var newIndicator = TroubleShootingTree.Indicator(indicatorData, "Indicator")
-            woeList.add(newIndicator)
+        var createdIndicators = ArrayList<TroubleShootingTree.Woe>()
+        for(trobdata in troubleData){
+            val newIndicator = TroubleShootingTree.Indicator(trobdata, "Indicator")
+            createdIndicators.add(newIndicator)
         }
+        return createdIndicators
     }
 
-    fun createSymptomLevelTroubles() {
+    fun createSymptoms() {
         var troubleTitles = arrayListOf<String>("Check Engine ", "Reduced Acceleration")
         var type = "Symptom" //These top level ones are indicators so we will have the type as "i"
     }
