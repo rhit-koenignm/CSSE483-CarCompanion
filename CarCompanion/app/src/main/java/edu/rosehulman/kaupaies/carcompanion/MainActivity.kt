@@ -26,12 +26,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(Constants.TAG, "main onCreate running")
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
         user = intent.getStringExtra(WelcomeActivity.USER_UID)
-        Log.d(Constants.TAG, "user sent in: ${intent.getStringExtra(WelcomeActivity.USER_UID)}")
         isAnon = intent.getBooleanExtra(WelcomeActivity.IS_ANON.toString(), true)
 
         //passing in each menu id
@@ -52,7 +50,6 @@ class MainActivity : AppCompatActivity(),
         when (item.itemId) {
             R.id.navigation_car_detail -> {
                 currentFragment = "car detail"
-                Log.d(Constants.TAG, "user going to car details: $user")
                 if(isAnon) {
                     switchFrag(AnonFragment())
                     return true

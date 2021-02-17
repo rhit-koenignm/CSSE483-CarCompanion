@@ -23,4 +23,6 @@
     <string name="vin">VIN:</string>
     <string name="license_plate">License Plate:</string>
     <string name="license_state">License State:</string>
+    <string name="add_a_car">Add a Car</string>
+    <string name="logout">Logout</string>
 </resources>
