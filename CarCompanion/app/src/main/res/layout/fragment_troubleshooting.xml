@@ -9,7 +9,7 @@
         android:id="@+id/troubleshooting_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Troubleshooting Mode"
+        android:text="@string/troubleshooting_mode"
         android:textSize="24sp"
         android:layout_margin="60dp"
         android:layout_centerHorizontal="true"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/seafoam"
-        android:text="My car is..."
+        android:text="@string/init_trouble_title"
         android:layout_centerHorizontal="true"
         android:textSize="24sp"
         android:layout_below="@+id/troubleshooting_title"
@@ -34,5 +34,16 @@
         android:id="@+id/troubleshooting_recycler"
         />
 
+    <Button
+        android:id="@+id/next_step_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next_step"
+        android:backgroundTint="@color/darkest_blue"
+        android:textColor="@color/white"
+        android:layout_alignBottom="@id/troubleshooting_recycler"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="80dp"
+        />
 
 </RelativeLayout>

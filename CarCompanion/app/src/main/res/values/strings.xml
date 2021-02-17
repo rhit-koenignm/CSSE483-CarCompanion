@@ -23,4 +23,7 @@
     <string name="vin">VIN:</string>
     <string name="license_plate">License Plate:</string>
     <string name="license_state">License State:</string>
+    <string name="init_trouble_title">My car is...</string>
+    <string name="next_step">Next Step</string>
+    <string name="diagnosis_title">A possible Diagnosis is...</string>
 </resources>
