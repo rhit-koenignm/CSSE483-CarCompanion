@@ -17,7 +17,6 @@ class WelcomeActivity : AppCompatActivity() {
     private val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build()
     )
-
     private val RC_SIGN_IN = 1
 
     private var currentActivity: String = "WelcomeActivity"
@@ -44,7 +43,6 @@ class WelcomeActivity : AppCompatActivity() {
                             .build(), RC_SIGN_IN
             )
         }
-
         btn_guest.setOnClickListener {
             auth.signInAnonymously()
         }
@@ -59,7 +57,6 @@ class WelcomeActivity : AppCompatActivity() {
                 val inputIntent = Intent(this, MainActivity::class.java)
                 inputIntent.putExtra(USER_UID, user.uid)
                 inputIntent.putExtra(IS_ANON, user.isAnonymous)
-                Log.d(Constants.TAG, "user: ${user?.uid} ${user?.email} ${user?.isAnonymous}")
                 startActivity(inputIntent)
             } else if(this.currentActivity != "WelcomeActivity") {
                 this.currentActivity = "WelcomeActivity"
@@ -73,5 +70,4 @@ class WelcomeActivity : AppCompatActivity() {
         const val USER_UID = "USER_UID"
         const val IS_ANON = "IS_ANON"
     }
-
 }
