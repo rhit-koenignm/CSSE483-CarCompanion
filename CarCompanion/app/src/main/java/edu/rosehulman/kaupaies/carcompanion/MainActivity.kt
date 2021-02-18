@@ -99,15 +99,19 @@ class MainActivity : AppCompatActivity(),
 
     override fun onTroubleSelected(woe: TroubleShootingTree.Woe) {
 
-        Log.d(Constants.TAG, "Trouble Selected: ${woe.getTitle()}")
-        if(woe.woeType.equals("Diagnosis")){
+        Log.d(Constants.TAG, "Trouble Selected: ${woe.getTitle()}\n")
+        Log.d(Constants.TAG, "Woe is of type ${woe.getType()}")
+
+        if(woe.getType() == "Diagnosis"){
             val detailFragment = DiagnosisDetailsFragment.newInstance(woe.data)
             val ft = supportFragmentManager.beginTransaction()
             ft.replace(R.id.fragment_container, detailFragment)
             ft.addToBackStack("detail")
             ft.commit()
         }
-        else if(woe.woeType.equals("Symptom"))
+        else if(woe.getType().equals("Symptom")){
+
+        }
         else{
             //This case will be for when a indicator is picked
 

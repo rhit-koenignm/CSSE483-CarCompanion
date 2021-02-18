@@ -25,7 +25,9 @@
     <string name="license_state">License State:</string>
     <string name="add_a_car">Add a Car</string>
     <string name="logout">Logout</string>
-    <string name="init_trouble_title">My car is...</string>
+    <string name="init_trouble_title">What sensory experience are you having?</string>
+    <string name="back_step">Back Step</string>
+    <string name="restart_step">Restart Troubleshooting</string>
     <string name="next_step">Next Step</string>
     <string name="diagnosis_title">A possible Diagnosis is...</string>
     <string name="year">Year:</string>

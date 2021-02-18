@@ -2,12 +2,7 @@
 
 package edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting
 
-import android.os.Parcelable
 import edu.rosehulman.kaupaies.carcompanion.R
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.synthetic.main.fragment_troubleshooting.view.*
-import java.util.*
-import kotlin.collections.ArrayList
 
 public class TroubleShootingTree {
     //Troubleshooting trees are composed of nodes that referred to as Woes
@@ -24,9 +19,26 @@ public class TroubleShootingTree {
     final var finalStep: Int = 20
     lateinit var currentWoe: Woe
 
+    fun addWoes(list: java.util.ArrayList<Woe>, type: String){
+        for(i in 1..(list.size - 1)){
+            var woe = list.get(i)
+            if(type == "Indicator"){
+                indicators.add(woe)
+            }
+            else if(type == "Diagnosis"){
+                diagnoses.add(woe)
+            }
+            else {
+                //This is a symptom then
+                symptoms.add(woe)
+            }
+        }
+    }
+
     fun startTroubleShooting(): ArrayList<Woe>{
         //so our currentStep is at 0 but we're going to reset it just in case
         currentStep = 0
+        symptomPath = ArrayList<Woe>()
 
         //since this is the beginning, we want to return the indicators
         return indicators
@@ -42,7 +54,7 @@ public class TroubleShootingTree {
 
         if(currentWoe.symptoms.isEmpty()){
             //If there are no sub-symptoms, we're going to check if there are any common diagnosis
-            if(symptomPath.size < 3){
+            if(symptomPath.size < 4){
                 //Not enough relevant diagnoses, so we are going to look at another indicator path
                 currentStep++
                 return indicators.get(this.currentStep).symptoms
@@ -73,6 +85,16 @@ public class TroubleShootingTree {
     fun getCommonDiagnoses(): ArrayList<Woe> {
         val commonDiagnoses = (symptomPath.get(0) as Symptom).diagnoses
         var doesContain = true
+        var diagnosisMap = HashMap<Woe, Int>()
+        //Instead of going through each arraylist and comparing with each other, I'm going to go through each and insert the diagnoses into a map and then grab the
+
+        for(i in 1..(symptomPath.size - 1)){
+            var symptom = symptomPath.get(i) as Symptom
+            for(j in 1..(symptom.getDiagnoses().size - 1)){
+
+            }
+        }
+
 
 /*        val indexArray = ArrayList<indexArray>()
 
@@ -123,7 +145,7 @@ public class TroubleShootingTree {
 
 
     //This section of the code is the actual classes that server as our "nodes"
-    open class Woe(val data: TroubleData, open var woeType: String = "Woe") {
+    open class Woe(val data: TroubleData) {
         var symptoms = ArrayList<Woe>()
 
         fun getTitle(): String {
@@ -134,8 +156,8 @@ public class TroubleShootingTree {
             return this.data.text
         }
 
-        fun getType(): String {
-            return woeType
+        open fun getType(): String {
+            return ""
         }
 
         fun addSymptom(symp: Symptom){
@@ -147,21 +169,51 @@ public class TroubleShootingTree {
         }
     }
 
-    class Indicator(data: TroubleData, woeType: String) : Woe(data, woeType){
-        override var woeType: String = "Indicator"
+    class Indicator(data: TroubleData) : Woe(data){
+        var woeType: String = "Indicator"
+
+        override fun getType(): String{
+            return woeType
+        }
+
+        fun setType(givenType: String){
+            woeType = givenType
+        }
     }
 
-    class Symptom(data: TroubleData, woeType: String) : Woe(data, woeType) {
-        override var woeType: String = "Symptom"
+    class Symptom(data: TroubleData) : Woe(data) {
+        var woeType: String = "Symptom"
 
-        lateinit var diagnoses: ArrayList<Woe>
+        var diagnoses = ArrayList<Woe>()
+
+        override fun getType(): String{
+            return woeType
+        }
+
+        fun setType(givenType: String){
+            woeType = givenType
+        }
 
         fun addDiagnosis(diag: Diagnosis){
             diagnoses.add(diag)
         }
+
+        @JvmName("getDiagnoses1")
+        fun getDiagnoses(): ArrayList<Woe>{
+            return diagnoses;
+        }
     }
 
-    class Diagnosis(data: TroubleData, woeType: String) : Woe(data, woeType) {
-        override var woeType: String = "Diagnosis"
+    class Diagnosis(data: TroubleData) : Woe(data) {
+        var woeType: String = "Diagnosis"
+
+        override fun getType(): String{
+            return woeType
+        }
+
+        //made this function to make sure I can have each woe have the right type
+        fun setType(givenType: String){
+            woeType = givenType
+        }
     }
 }

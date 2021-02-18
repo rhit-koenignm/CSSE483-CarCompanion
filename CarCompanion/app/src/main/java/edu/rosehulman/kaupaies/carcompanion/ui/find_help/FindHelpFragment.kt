@@ -6,14 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import edu.rosehulman.kaupaies.carcompanion.Constants
 import edu.rosehulman.kaupaies.carcompanion.R
 
-class FindHelpFragment: Fragment() {
+class FindHelpFragment: Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     lateinit var myMapView: MapView
-    private lateinit var googleMap: GoogleMap
+    private lateinit var map: GoogleMap
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
@@ -45,5 +50,16 @@ class FindHelpFragment: Fragment() {
         super.onLowMemory()
         myMapView.onLowMemory()
     }
+    override fun onMarkerClick(p0: Marker?) = false
 
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+
+        // Add a marker in Sydney and move the camera
+        val sydney = LatLng(-34.0, 151.0)
+        map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        map.getUiSettings().setZoomControlsEnabled(true)
+        map.setOnMarkerClickListener(this)
+    }
 }

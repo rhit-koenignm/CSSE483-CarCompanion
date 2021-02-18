@@ -7,13 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.rosehulman.kaupaies.carcompanion.Constants
 import edu.rosehulman.kaupaies.carcompanion.R
-import kotlinx.android.synthetic.main.fragment_troubleshooting.*
-import java.lang.RuntimeException
 
 class TroubleshootingFragment : Fragment() {
 
@@ -32,6 +29,7 @@ class TroubleshootingFragment : Fragment() {
         view.adapter = adapter
         view.layoutManager = LinearLayoutManager(context)
         view.setHasFixedSize(true)
+
         return relativeView
     }
 

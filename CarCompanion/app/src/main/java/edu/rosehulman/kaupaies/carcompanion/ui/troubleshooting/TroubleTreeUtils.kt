@@ -15,8 +15,9 @@ object TroubleTreeUtils {
 
          var createdDiagnosis = ArrayList<TroubleShootingTree.Woe>()
          for(trobdata in troubles){
-             val newIndicator = TroubleShootingTree.Indicator(trobdata, "Diagnosis")
-             createdDiagnosis.add(newIndicator)
+             val newDiagnosis = TroubleShootingTree.Diagnosis(trobdata)
+             newDiagnosis.setType("Diagnosis")
+             createdDiagnosis.add(newDiagnosis)
          }
          return createdDiagnosis
     }
@@ -43,7 +44,7 @@ object TroubleTreeUtils {
 
         var createdIndicators = ArrayList<TroubleShootingTree.Woe>()
         for(trobdata in troubleData){
-            val newIndicator = TroubleShootingTree.Indicator(trobdata, "Indicator")
+            val newIndicator = TroubleShootingTree.Indicator(trobdata)
             createdIndicators.add(newIndicator)
         }
         return createdIndicators
