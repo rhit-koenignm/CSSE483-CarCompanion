@@ -6,6 +6,7 @@ package edu.rosehulman.kaupaies.carcompanion.ui.find_help
 //import com.google.android.libraries.places.api.net.PlacesClient
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import edu.rosehulman.kaupaies.carcompanion.Constants
 
 import edu.rosehulman.kaupaies.carcompanion.R
 
@@ -36,7 +38,8 @@ class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map_layout) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
+        print("Help Map Activity")
+        Log.d(Constants.TAG, "Help Map Activity launched")
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
