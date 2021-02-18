@@ -28,8 +28,10 @@
         android:name="edu.rosehulman.kaupaies.carcompanion.ui.find_help.FindHelpFragment"
         android:label="Find Help"
         tools:layout="@layout/fragment_find_help" />
+
     <action
         android:id="@+id/action_global_navigation_troubleshooting"
         app:destination="@id/navigation_troubleshooting"
         app:popUpTo="@id/navigation_home" />
+
 </navigation>

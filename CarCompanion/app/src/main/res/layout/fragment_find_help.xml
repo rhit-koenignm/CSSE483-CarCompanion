@@ -5,5 +5,11 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.find_help.HelpMapActivity"
-    android:background="@color/seafoam" />
+    tools:context=".ui.find_help.HelpMapActivity">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</fragment>

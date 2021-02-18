@@ -15,13 +15,15 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+
 import edu.rosehulman.kaupaies.carcompanion.R
 
-class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback {
+class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
-    private var cameraPosition: CameraPosition? = null
+    private lateinit var cameraPosition: CameraPosition
 
     //The entry point to the Places api
 
@@ -54,9 +56,10 @@ class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback {
         val sydney = LatLng(-34.0, 151.0)
         map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        //map.getUiSettings().setZoomControlsEnabled(true)
-        //map.setOnMarkerClickListener(this)
+        map.getUiSettings().setZoomControlsEnabled(true)
+        map.setOnMarkerClickListener(this)
     }
 
-    //override fun onMarkerClick(p0: Marker?) = false
+    override fun onMarkerClick(p0: Marker?) = false
+
 }
