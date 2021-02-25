@@ -5,7 +5,7 @@ import android.content.Context
 object TroubleTreeUtils {
 
     fun loadTroubleTree(context: Context?): TroubleShootingTree{
-        return TroubleShootingTree()
+        return createTree(context)
     }
 
      fun loadDiagnoses(context: Context?): ArrayList<TroubleShootingTree.Woe> {
@@ -22,8 +22,13 @@ object TroubleTreeUtils {
          return createdDiagnosis
     }
 
+    //This tree creation relies on my knowing which index all these are at
     fun createTree(context: Context?): TroubleShootingTree {
         val troubleTree = TroubleShootingTree()
+        var indicList = createIndicators()
+        var diagnosesList = createIndicators()
+        var sympList = createSymptoms()
+
         return troubleTree
     }
 
@@ -45,14 +50,27 @@ object TroubleTreeUtils {
         var createdIndicators = ArrayList<TroubleShootingTree.Woe>()
         for(trobdata in troubleData){
             val newIndicator = TroubleShootingTree.Indicator(trobdata)
+            newIndicator.setType(type)
             createdIndicators.add(newIndicator)
         }
         return createdIndicators
     }
 
-    fun createSymptoms() {
-        var troubleTitles = arrayListOf<String>("Check Engine ", "Reduced Acceleration")
+    fun createSymptoms(): ArrayList<TroubleShootingTree.Woe> {
+        //var troubleTitles = arrayListOf<String>("Check Engine ", "Reduced Acceleration")
+        var troubleData = ArrayList<TroubleData>()
+        troubleData.add(TroubleData("Burning smell", "Your car is producing a burning smell"))
+
         var type = "Symptom" //These top level ones are indicators so we will have the type as "i"
+
+        var createdSymptoms = ArrayList<TroubleShootingTree.Woe>()
+        for(trobdata in troubleData){
+            val newSymptom = TroubleShootingTree.Symptom(trobdata)
+            newSymptom.setType(type)
+            createdSymptoms.add(newSymptom)
+        }
+
+        return createdSymptoms
     }
 
 
