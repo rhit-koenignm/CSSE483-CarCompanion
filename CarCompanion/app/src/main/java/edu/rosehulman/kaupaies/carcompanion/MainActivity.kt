@@ -1,5 +1,6 @@
 package edu.rosehulman.kaupaies.carcompanion
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -10,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import edu.rosehulman.kaupaies.carcompanion.ui.car_info.CarDetailFragment
-import edu.rosehulman.kaupaies.carcompanion.ui.find_help.FindHelpFragment
+import edu.rosehulman.kaupaies.carcompanion.ui.find_help.HelpMapActivity
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.DiagnosisDetailsFragment
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleShootingTree
 import edu.rosehulman.kaupaies.carcompanion.ui.troubleshooting.TroubleshootingFragment
@@ -67,7 +68,9 @@ class MainActivity : AppCompatActivity(),
             }
             R.id.navigation_find_help -> {
                 currentFragment = "find help"
-                switchFrag(FindHelpFragment())
+                val i = Intent(this@MainActivity, HelpMapActivity::class.java)
+                startActivity(i)
+//                switchFrag(FindHelpFragment())
             }
         }
         return true
