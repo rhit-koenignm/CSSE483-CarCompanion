@@ -116,11 +116,7 @@ class MainActivity : AppCompatActivity(),
             ft.addToBackStack("detail")
             ft.commit()
         }
-        else if(woe.getType().equals("Symptom")){
-
-        }
         else{
-            //This case will be for when a indicator is picked
 
             //if a non diagnosis is selected then we want to let the adapter know
             //will create function later

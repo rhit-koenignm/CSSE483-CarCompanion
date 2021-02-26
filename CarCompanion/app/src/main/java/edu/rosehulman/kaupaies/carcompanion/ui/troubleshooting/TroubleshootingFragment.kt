@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,22 @@ class TroubleshootingFragment : Fragment() {
         view.adapter = adapter
         view.layoutManager = LinearLayoutManager(context)
         view.setHasFixedSize(true)
+
+        var restart_trouble_button = relativeView.findViewById<Button>(R.id.restart_button)
+        restart_trouble_button.setOnClickListener {
+            Log.d(Constants.TAG, "restart button pressed")
+            adapter.restartTroubleshooting()
+        }
+
+        var back_step_button = relativeView.findViewById<Button>(R.id.back_step_button)
+        back_step_button.setOnClickListener {
+            Log.d(Constants.TAG, "back step button pressed")
+        }
+
+        var next_step_button = relativeView.findViewById<Button>(R.id.next_step_button)
+        next_step_button.setOnClickListener {
+            Log.d(Constants.TAG, "next step button pressed")
+        }
 
         return relativeView
     }

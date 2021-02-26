@@ -21,14 +21,14 @@ public class TroubleShootingTree {
 
     fun addWoes(list: java.util.ArrayList<Woe>, type: String){
         for(i in 1..(list.size - 1)){
-            var woe = list.get(i)
+            var woe = list[i]
             if(type == "Indicator"){
                 indicators.add(woe)
             }
             else if(type == "Diagnosis"){
                 diagnoses.add(woe)
             }
-            else {
+            else if(type == "Symptom"){
                 //This is a symptom then
                 symptoms.add(woe)
             }
@@ -44,6 +44,14 @@ public class TroubleShootingTree {
         return indicators
     }
 
+//    fun backStep(): ArrayList<Woe>{
+//        currentStep
+//    }
+//
+//    fun manualNextStep(): ArrayList<Woe> {
+//
+//    }
+
     fun nextStep(selected: Woe): ArrayList<Woe> {
         currentWoe = selected
 
@@ -57,7 +65,7 @@ public class TroubleShootingTree {
             if(symptomPath.size < 4){
                 //Not enough relevant diagnoses, so we are going to look at another indicator path
                 currentStep++
-                return indicators.get(this.currentStep).symptoms
+                return indicators[this.currentStep].symptoms
             }
             else {
                 //We've found enough in common, so we can just return the common diagnoses
@@ -87,54 +95,28 @@ public class TroubleShootingTree {
         var doesContain = true
         var diagnosisMap = HashMap<Woe, Int>()
         //Instead of going through each arraylist and comparing with each other, I'm going to go through each and insert the diagnoses into a map and then grab the
+        var symptom: Symptom
+        var diagnoses: ArrayList<Diagnosis>
 
-        for(i in 1..(symptomPath.size - 1)){
-            var symptom = symptomPath.get(i) as Symptom
-            for(j in 1..(symptom.getDiagnoses().size - 1)){
-
+        for(i in 1 until symptomPath.size){
+            symptom = symptomPath.get(i) as Symptom
+            diagnoses = symptom.getDiagnoses() as ArrayList<Diagnosis>
+            for(j in 1 until symptom.getDiagnoses().size){
+                if(diagnosisMap.containsKey(diagnoses[j])){
+                    var count = diagnosisMap.getValue(diagnoses[j]) + 1
+                    diagnosisMap.put(diagnoses[j], count)
+                }
+                else {
+                    diagnosisMap.put(diagnoses[j], 1)
+                }
             }
         }
 
-
-/*        val indexArray = ArrayList<indexArray>()
-
-        // for loop for firstArray
-
-        for (i in 1..(symptomPath.size - 1)) {
-            var nextDiagList = symptomPath.get(i)
-            var elementIndex: Int
-            var arrayIndex: Int
-
-            // for loop for next ArrayList
-            for (i in 1 until nextDiagList.size) {
-
-                if (!nextDiagList[i].contains(e)) {
-                    doesContain = false
-                    break
-
-                } else {
-                    elementIndex = arrayList[i].indexOf(e)
-                    arrayIndex = i
-
-                    indexArray.add(indexArray(arrayIndex, elementIndex))
-                }
+        for(Woe in diagnosisMap.keys){
+            if(diagnosisMap.get(Woe)!! > 3){
+                commonDiagnoses.add(Woe)
             }
-
-            if (doesContain) {
-                commonDiagnoses.add(e)
-
-                // remove element
-                for (i in 0 until indexArray.size) {
-                    arrayList[indexArray[i].arrayIndex].removeAt(indexArray[i].elementIndex)
-                }
-
-                indexArray.clear()
-
-            } else {
-                indexArray.clear()
-                doesContain = true
-            }
-        }*/
+        }
 
         return commonDiagnoses as ArrayList<Woe>
     }
@@ -145,7 +127,15 @@ public class TroubleShootingTree {
 
 
     //This section of the code is the actual classes that server as our "nodes"
-    open class Woe(val data: TroubleData) {
+    open class Woe(val data: TroubleData) : Comparable<Woe> {
+        override fun compareTo(other: Woe): Int {
+            if(data.equals(other.data)){
+                return 0
+            }
+            else {
+                return 1
+            }
+        }
         var symptoms = ArrayList<Woe>()
 
         fun getTitle(): String {
@@ -169,7 +159,7 @@ public class TroubleShootingTree {
         }
     }
 
-    class Indicator(data: TroubleData) : Woe(data){
+    class Indicator(data: TroubleData) : TroubleShootingTree.Woe(data){
         var woeType: String = "Indicator"
 
         override fun getType(): String{
@@ -181,10 +171,10 @@ public class TroubleShootingTree {
         }
     }
 
-    class Symptom(data: TroubleData) : Woe(data) {
+    class Symptom(data: TroubleData) : TroubleShootingTree.Woe(data) {
         var woeType: String = "Symptom"
 
-        var diagnoses = ArrayList<Woe>()
+        var diagnoses = ArrayList<TroubleShootingTree.Woe>()
 
         override fun getType(): String{
             return woeType
@@ -201,6 +191,10 @@ public class TroubleShootingTree {
         @JvmName("getDiagnoses1")
         fun getDiagnoses(): ArrayList<Woe>{
             return diagnoses;
+        }
+
+        fun getDiagnosisAt(index: Int): Woe {
+            return diagnoses[index]
         }
     }
 

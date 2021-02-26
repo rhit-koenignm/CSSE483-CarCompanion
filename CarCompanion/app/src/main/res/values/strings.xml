@@ -32,4 +32,8 @@
     <string name="diagnosis_title">A possible Diagnosis is...</string>
     <string name="year">Year:</string>
     <string name="title_activity_help_map">Map</string>
+    <string name="back_to_home_text">Back home</string>
+    <string name="mechanics">Mechanics</string>
+    <string name="autoshops">AutoShops</string>
+    <string name="search">Search</string>
 </resources>

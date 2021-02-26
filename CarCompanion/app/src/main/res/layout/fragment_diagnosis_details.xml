@@ -9,7 +9,7 @@
         android:id="@+id/fragment_diagnosis_details_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:textSize="40sp"
         android:textStyle="bold" />

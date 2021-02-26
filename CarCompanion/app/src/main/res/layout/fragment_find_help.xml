@@ -35,8 +35,8 @@
                 android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search"
-                android:textColor="@color/purple_700"/>
+                android:text="@string/search"
+                android:textColor="@color/darkest_blue"/>
 
 
         </LinearLayout>
@@ -50,31 +50,27 @@
                 android:id="@+id/button_autoshops"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:text="AutoShops"
-                android:textColor="@color/purple_700"
+                android:text="@string/autoshops"
+                android:textColor="@color/darkest_blue"
                 />
             <Button
                 android:id="@+id/button_mechanics"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:text="Mechanics"
-                android:textColor="@color/purple_700"/>
-            
-            <ImageButton
-                android:id="@+id/current_location_button"
-                android:layout_width="70dp"
+                android:text="@string/mechanics"
+                android:textColor="@color/darkest_blue"
+                />
+
+            <Button
+                android:id="@+id/back_home_button"
+                android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="3dp"
-                android:layout_marginBottom="28dp"
-                android:contentDescription="@null"
-                android:src="@drawable/current_location_icon" />    
+                android:text="@string/back_to_home_text"
+                android:textColor="@color/darkest_blue"/>
+
             
         </LinearLayout>
         
     </LinearLayout>
-
-    
 
 </FrameLayout>

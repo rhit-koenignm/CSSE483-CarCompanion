@@ -14,7 +14,7 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
     var woes = ArrayList<TroubleShootingTree.Woe>()
 
     init {
-        //tree = TroubleTreeUtils.loadTroubleTree(context)
+        tree = TroubleTreeUtils.loadTroubleTree(context)
         woes = TroubleTreeUtils.loadWoes(context)
     }
 
@@ -39,6 +39,11 @@ class TroubleAdapter(var context: Context?, var listener: TroubleshootingFragmen
     fun stepThruTree(adapterPosition: Int){
         removeWoes()
         addWoes(tree.nextStep(woes.get(adapterPosition)))
+    }
+
+    fun restartTroubleshooting(){
+        removeWoes()
+        addWoes(tree.startTroubleShooting())
     }
 
     fun removeWoes() {

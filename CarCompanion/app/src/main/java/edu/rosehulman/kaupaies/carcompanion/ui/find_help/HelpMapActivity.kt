@@ -5,10 +5,12 @@ package edu.rosehulman.kaupaies.carcompanion.ui.find_help
 //import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
 //import com.google.android.libraries.places.api.net.PlacesClient
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -22,6 +24,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import edu.rosehulman.kaupaies.carcompanion.Constants
+import edu.rosehulman.kaupaies.carcompanion.MainActivity
 import edu.rosehulman.kaupaies.carcompanion.R
 
 class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -42,6 +45,14 @@ class HelpMapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         mapFragment.getMapAsync(this)
         Log.d(Constants.TAG, "Help Map Activity launched")
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        //handling our buttons
+        //we only care about the back home button for now
+        var backHomeButton = findViewById<Button>(R.id.back_home_button)
+        backHomeButton.setOnClickListener {
+            val i = Intent(this@HelpMapActivity, MainActivity::class.java)
+            startActivity(i)
+        }
     }
 
     companion object{
